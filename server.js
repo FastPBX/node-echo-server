@@ -29,7 +29,7 @@ for (let i = 0; i < 10; i++) {
     server[i].on('message', function (message, remote) {
         console.log('Data received from client : ' + message.toString());
 
-        this.send(new Buffer(message + '|' + MY_HOST_IP + '|' + MY_POD_IP), remote.port, remote.address, function (err, bytes) {
+        this.send(new Buffer(message), remote.port, remote.address, function (err, bytes) {
             if (err) throw err;
             console.log(`UDP message sent to ${remote.address}:${remote.port}`);
         });
